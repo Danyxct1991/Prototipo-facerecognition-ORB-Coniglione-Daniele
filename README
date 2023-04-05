@@ -1,0 +1,79 @@
+Prototipo software
+
+
+Il software è contenuto nella cartella ‘prototipo’, e la sua implementazione è costituita da un unico script Python ed alcuni file di supporto.
+E’ possibile inserire dentro la cartella faces, una propria foto per essere riconosciuti.
+Per avviare il software basta eseguire lo script demo.py nel seguente modo:
+python demo.py 
+
+Requisiti software e configurazione
+Il software utilizza molte librerie Python standard, ed alcune librerie che sono necessarie per l’utilizzo della rete neurale che implementa la detection delle persone. 
+Librerie standard (Python 3.6+) 
+argparse
+os
+Librerie aggiuntive
+numpy
+scipy
+imutils
+cv2 
+dlib
+pillow
+pytesseract
+collections import namedtuple
+
+INSTALLAZIONE TESSERACT E PYTESSERACT
+Tesseract: è il motore OCR, quindi il cuore dell'effettivo riconoscimento del testo. Prende l'immagine e in cambio ci dà il testo.
+Pytesseract: è il legame tesseract per python. Con questa libreria possiamo usare il motore tesseract con python con poche righe di codice.
+
+Per installare tesseract:
+Se hai Windows:
+Vai su questa pagina: https://github.com/UB-Mannheim/tesseract/wiki e scarica tesseract 64 bit.
+
+Se hai Linux:
+Dal terminale,
+sudo apt install tesseract-ocr 
+sudo apt install libtesseract-dev
+Se hai Mac:
+sudo port install tesseract
+Pytesseract è una libreria essenziale se vogliamo usare tesseract con Python. Può essere facilmente installato come qualsiasi altra libreria Python usando il comando pip.
+pip install pytesseract
+pip3 install pytesseract
+
+Per scaricare tesseract per un linguaggio specifico utilizzare
+
+$ sudo apt-get install tesseract-ocr-LANG
+
+dove LANG è il codice di tre lettere per la lingua di cui hai bisogno. Puoi scoprire i valori LANG Per saperne di più, clicca qui.
+
+Io ho scaricato:
+$ sudo apt-get install tesseract-ocr-ITA
+
+
+È possibile scaricare il .traindata file per la lingua di cui hai bisogno Per saperne di più, clicca qui e posizionalo dentro $TESSDATA_PREFIX directory (dovrebbe essere la stessa di dove tessdata directory è installata) e dovrebbe essere pronto per l'uso.
+
+
+
+
+
+tutti i file e le configurazioni necessarie sono già presenti nel codice fornito, che è utilizzabile semplicemente installando le librerie aggiuntive nel proprio ambiente Python.
+
+E’ consigliabile utilizzare una webcam o altro dispositivo di acquisizione con capacità di risoluzione migliore rispetto alla webcam che si trovano solitamente nei portatili.
+
+Personalmente ho utilizzato la telecamera del cellulare attraverso l’applicazione android “IP Webcam” sfruttando un indirizzo ip locale.
+Per poterlo utilizzare,la linea di codice da togliere come commento su def run_recognition(self): è:
+
+#video_capture = cv2.VideoCapture('http://192.168.139.253:8090/video')
+
+commentando:
+
+video_capture = cv2.VideoCapture(0)
+
+e possibile utilizzarlo anche con un video con:
+
+#video_capture = cv2.VideoCapture('video.mp4')
+
+
+Commenti sulle prestazioni
+
+Il Software funziona senza intoppi però è molto sensibile alla luminosità e qualità del flusso video, se bassa o scarsa potrebbe non dare buoni risultati, inoltre in presenza di luce diretta il documento riflette tale luce, rendendo impossibile la lettura del testo.
+
