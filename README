@@ -8,7 +8,8 @@ python demo.py
 
 Requisiti software e configurazione
 Il software utilizza molte librerie Python standard, ed alcune librerie che sono necessarie per l’utilizzo della rete neurale che implementa la detection delle persone. 
-Librerie standard (Python 3.6+) 
+Librerie standard 
+Python 3.10.6 
 argparse
 os
 Librerie aggiuntive
